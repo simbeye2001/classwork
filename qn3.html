@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>qn3</title>
+</head>
+
+<body>
+
+    <h1>My super nifty to-do list</h1>
+    <ul id="list"></ul>
+    <div>
+        <input type="text" id="item" />
+        <button id="add">add</button>
+        <button id="remove">remove</button>
+    </div>
+
+
+
+
+
+    <script>
+        const list = document.getElementById('list');
+        const addBtn = document.getElementById('add');
+        const removeBtn = document.getElementById('remove');
+        const itemInput = document.getElementById('item');
+
+        let isWhite = true;
+
+        function addItem() {
+            // Get the input value and split it into words
+            const input = itemInput.value.trim();
+            const words = input.split(' ');
+
+            // Create an li element for each word and add it to the list
+            for (const word of words) {
+                const li = document.createElement('li');
+                li.textContent = word;
+                li.style.backgroundColor = isWhite ? 'white' : 'yellow';
+                isWhite = !isWhite;
+                list.appendChild(li);
+            }
+
+            // Clear the input box
+            itemInput.value = '';
+        }
+
+        function removeItem() {
+            // Get the input value and remove the first occurrence of the word from the list
+            const input = itemInput.value.trim().toLowerCase();
+            const items = list.getElementsByTagName('li');
+            for (const item of items) {
+                if (item.textContent.toLowerCase() === input) {
+                    item.remove();
+                    break;
+                }
+            }
+
+            // Reset the background colors
+            const itemsRemaining = list.getElementsByTagName('li').length;
+            isWhite = itemsRemaining % 2 === 0;
+
+            // Clear the input box
+            itemInput.value = '';
+        }
+
+        addBtn.addEventListener('click', addItem);
+        removeBtn.addEventListener('click', removeItem);
+    </script>
+
+</body>
+
+</html>

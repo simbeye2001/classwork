@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Rex</h1>
+
+    <script>
+        const priceRegExp = /^\$\d+(\.\d{2})?$/;
+        const str1 = '$14.99';
+        const str2 = '$1234567.00';
+        const str3 = '$.90';
+        const str4 = '$14';
+        const str5 = '$134213.89money';
+        const str6 = '$1.1a';
+
+        console.log(priceRegExp.test(str1)); // true
+        console.log(priceRegExp.test(str2)); // true
+        console.log(priceRegExp.test(str3)); // true
+        console.log(priceRegExp.test(str4)); // false
+        console.log(priceRegExp.test(str5)); // false
+        console.log(priceRegExp.test(str6)); // false
+    </script>
+
+</body>
+
+</html>

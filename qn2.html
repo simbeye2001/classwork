@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        const selfClosingTagRegExp = /<([a-zA-Z]+)(\s+[a-zA-Z]+="[^"]*")*\s*\/>/;
+        const str1 = '<img src="foo.jpg" />';
+        const str2 = '<img />';
+        const str3 = '<a href="foo.html" id="stuff" />';
+        const str4 = '</>';
+        const str5 = '<img src= />';
+
+        console.log(selfClosingTagRegExp.test(str1)); // true
+        console.log(selfClosingTagRegExp.test(str2)); // true
+        console.log(selfClosingTagRegExp.test(str3)); // true
+        console.log(selfClosingTagRegExp.test(str4)); // false
+        console.log(selfClosingTagRegExp.test(str5)); // false
+    </script>
+
+</body>
+
+</html>
